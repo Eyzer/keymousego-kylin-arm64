@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- KeymouseGo 图标：按上游 Mondrian.png (32x32) 逐像素重建的矢量版
+     原作是蒙德里安风格的几何色块，这里用 32x32 坐标网格等价还原，
+     可在任意尺寸下保持锐利。 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+     width="32" height="32" shape-rendering="crispEdges">
+  <title>KeymouseGo</title>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="32" height="32" fill="#FFFFFF"/>
+
+  <!-- 色块 -->
+  <rect x="1"  y="1"  width="6"  height="7" fill="#FF0000"/>
+  <rect x="27" y="9"  width="4"  height="5" fill="#0000FF"/>
+  <rect x="8"  y="25" width="12" height="6" fill="#FFFF00"/>
+  <rect x="21" y="25" width="5"  height="6" fill="#00BF00"/>
+
+  <!-- 黑色骨架 -->
+  <g fill="#000000">
+    <rect x="0"  y="0"  width="32" height="1"/>   <!-- 上边框 -->
+    <rect x="0"  y="31" width="32" height="1"/>   <!-- 下边框 -->
+    <rect x="0"  y="0"  width="1"  height="32"/>  <!-- 左边框 -->
+    <rect x="31" y="0"  width="1"  height="32"/>  <!-- 右边框 -->
+    <rect x="0"  y="8"  width="32" height="1"/>   <!-- 横向分割线 -->
+    <rect x="7"  y="1"  width="1"  height="30"/>  <!-- 左侧竖线 -->
+    <rect x="26" y="9"  width="1"  height="22"/>  <!-- 右侧竖线 -->
+    <rect x="26" y="14" width="6"  height="1"/>   <!-- 蓝块下边线 -->
+    <rect x="7"  y="24" width="20" height="1"/>   <!-- 底部横向分割线 -->
+    <rect x="20" y="24" width="1"  height="7"/>   <!-- 黄/绿分隔竖线 -->
+  </g>
+</svg>

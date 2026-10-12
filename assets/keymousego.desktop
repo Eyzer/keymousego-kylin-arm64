@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=KeymouseGo
+Name[zh_CN]=KeymouseGo 键鼠录制器
+Name[zh_TW]=KeymouseGo 鍵鼠錄製器
+GenericName=Mouse &amp; Keyboard Automation
+GenericName[zh_CN]=鼠标键盘自动化工具
+Comment=Record and replay mouse &amp; keyboard actions
+Comment[zh_CN]=记录鼠标键盘操作并自动回放，可用于重复性工作
+Exec=keymousego
+TryExec=keymousego
+Icon=keymousego
+Terminal=false
+StartupNotify=true
+Categories=Utility;Accessibility;
+Keywords=automation;mouse;keyboard;macro;record;replay;录制;回放;自动化;按键精灵;

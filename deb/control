@@ -1,0 +1,28 @@
+Package: keymousego
+Version: 5.2.1-1
+Section: utils
+Priority: optional
+Architecture: arm64
+Maintainer: KeymouseGo Kylin port <noreply@localhost>
+Installed-Size: @SIZE@
+Depends: libc6 (>= 2.31), libglib2.0-0, libgl1, libegl1, libfontconfig1, libfreetype6,
+ libdbus-1-3, libx11-6, libxext6, libxrender1, libxi6, libxtst6, libxfixes3,
+ libxcursor1, libxrandr2, libxkbcommon0, libxkbcommon-x11-0, libxcb1,
+ libxcb-cursor0, libxcb-icccm4, libxcb-image0, libxcb-keysyms1, libxcb-randr0,
+ libxcb-render-util0, libxcb-shape0, libxcb-xinerama0, libxcb-xkb1, libxcb-util1,
+ libxcb-sync1, libxcb-xfixes0, libxcb-glx0, libasound2, libpulse0
+Recommends: xclip, fonts-noto-cjk
+Suggests: xdotool
+Homepage: https://github.com/taojy123/KeymouseGo
+Description: KeymouseGo - 鼠标键盘录制回放工具
+ 记录用户的鼠标、键盘操作，并通过触发按钮自动执行之前记录的操作，
+ 可设定执行次数，适用于操作简单但单调重复的工作场景。
+ .
+ 本包为银河麒麟/Linux aarch64(arm64) 平台构建版：
+  - 基于 Python 3.8 + PySide6 6.5.3 (Qt6) 打包为独立的 onedir 程序，
+    自带 Python 解释器与 Qt 运行库，不依赖系统 Python 环境；
+  - 已适配 Linux/X11 平台，录音录屏无关的 Windows 专属代码均未包含；
+  - 用户数据（脚本/日志/插件/配置）保存在 ~/.local/share/keymousego，
+    安装目录 /opt/keymousego 保持只读。
+ .
+ 注意：必须在 X11 会话下使用，Wayland 下无法捕获全局键鼠事件。

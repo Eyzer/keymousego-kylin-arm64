@@ -1,0 +1,213 @@
+################ 0. 清理环境 ################
+
+################ 1. 安装 deb ################
+Setting up keymousego (5.2.1-1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+ii  keymousego     5.2.1-1      arm64        KeymouseGo - 鼠标键盘录制回放工具
+  [PASS] /usr/bin/keymousego 存在
+  [PASS] /usr/share/applications/keymousego.desktop 存在
+  [PASS] /opt/keymousego/KeymouseGo 存在
+  安装体积: 171M
+  [PASS] 图标已安装 7 个尺寸
+
+################ 2. 准备测试用户与 Xvfb ################
+  [PASS] Xvfb :99 启动，XTEST 扩展可用
+  [PASS] Xvfb :99 RECORD 扩展可用
+  [PASS] 屏幕分辨率 1280x900
+
+################ 3. 启动目标窗口 xev + GUI ################
+  [PASS] xev 目标窗口已启动
+  等待 GUI 启动（qemu 模拟下较慢）...
+  [PASS] GUI 进程存活（普通用户 kmgtest，非 root）
+  [PASS] KeymouseGo 窗口已创建 id=6291461
+  [PASS] 数据目录补丁生效：/home/kmgtest/.local/share/keymousego/config.ini 已生成
+  [PASS] 日志目录已生成
+  [PASS] 应用日志已写入用户目录
+  截图: 01_gui_start.png
+
+################ 3.5 中文化 + 底部作者信息 ################
+    2026-10-12 12:18:09.864 | INFO     | UIFunc:__init__:89 - assets root:/build/kmg/app/assets
+    2026-10-12 12:18:10.721 | INFO     | Plugin.Manager:discover_plugin:58 - Discovered Plugin []
+    2026-10-12 12:18:10.725 | INFO     | Plugin.Manager:register_plugin:71 - Registered functions: dict_keys([])
+    PulseAudioService: pa_context_connect() failed
+    2026-10-12 12:18:10.799 | DEBUG    | UIFunc:__init__:286 - Initialize at thread <PySide6.QtCore.QThread(0x10b9b20) at 0x551d4641c0>
+    TAG=default
+    AUTHOR=作者：Eyzer　·　二次开发自：KeymouseGo v5.2.1
+    AUTHOR_OBJNAME=label_author
+    LANG=简体中文
+    GROUP_HOTKEYS=热键
+    GROUP_CONFIG=配置
+    BT_RECORD=开始录制
+    BT_RUN=启动
+    BT_PAUSE=暂停录制
+    LABEL_START=开始/暂停执行
+    LABEL_RECORD=开始/暂停录制
+    LABEL_STOP=终止录制/执行
+    LABEL_LANG=语言
+    LABEL_SCRIPT=脚本
+    LABEL_RUNTIMES=执行次数
+    LABEL_PRECISION=鼠标精度
+    LABEL_THEME=主题
+    LABEL_VOLUME=音量
+    STATUS=就绪...
+    CURSOR_LABEL=光标位置：
+    WINDOW_TITLE=KeymouseGo v5.2.1
+    STATUSBAR_CHILDREN=label_author
+  ---- 断言：首次启动即为全中文界面 ----
+  [PASS] LANG = 简体中文
+  [PASS] GROUP_HOTKEYS = 热键
+  [PASS] GROUP_CONFIG = 配置
+  [PASS] BT_RECORD = 开始录制
+  [PASS] BT_RUN = 启动
+  [PASS] BT_PAUSE = 暂停录制
+  [PASS] LABEL_START = 开始/暂停执行
+  [PASS] LABEL_RECORD = 开始/暂停录制
+  [PASS] LABEL_STOP = 终止录制/执行
+  [PASS] LABEL_LANG = 语言
+  [PASS] LABEL_SCRIPT = 脚本
+  [PASS] LABEL_RUNTIMES = 执行次数
+  [PASS] LABEL_PRECISION = 鼠标精度
+  [PASS] LABEL_THEME = 主题
+  [PASS] LABEL_VOLUME = 音量
+  [PASS] STATUS = 就绪...
+  [PASS] CURSOR_LABEL = 光标位置：
+  作者信息栏文本: 作者：Eyzer　·　二次开发自：KeymouseGo v5.2.1
+  [PASS] 底部信息栏含作者 Eyzer
+  [PASS] 底部信息栏含来源项目 KeymouseGo
+  [PASS] 底部信息栏标明二次开发来源
+  [PASS] 作者信息栏确实挂在状态栏（界面底部）
+  [PASS] 控件命名 label_author
+  [PASS] GROUP_HOTKEYS 已中文化（非 Hotkeys）
+  [PASS] BT_RUN 已中文化（非 Launch）
+  [PASS] LABEL_THEME 已中文化（非 Theme）
+  [PASS] STATUS 已中文化（非 Ready...）
+  ---- 断言：语言选择被记住（config.ini 往返） ----
+  [PASS] 切到 English 后 config.ini 记为 Language=en
+  [PASS] LANG = English
+  [PASS] GROUP_HOTKEYS = Hotkeys
+  [PASS] 切回简体中文后 config.ini 记为 Language=zh-cn
+  [PASS] LANG = 简体中文
+  [PASS] STATUS = 就绪...
+  ---- 断言：打包产物内确实带上了中文资源与作者串 ----
+  [PASS] 产物内含 zh-cn.qm (2804 字节)
+    Eyzer                  FOUND
+    二次开发自                  FOUND
+    KeymouseGo v5.2.1      FOUND
+    作者：                    FOUND
+    zh-cn                  FOUND
+    (扫描模块 516 个, 提取字符串常量 76179 条)
+  [PASS] 冻结可执行文件内确认包含作者串与来源串
+
+################ 4. 全局热键录制 (F10 -> 注入 -> F9) ################
+  截图: 02_after_record.png
+  [PASS] 录制脚本已落盘: 1012_1218.json5
+  ---- 脚本内容 ----
+    {
+      scripts: [
+        {
+          delay: 3106,
+          event_type: "EM",
+          action_type: "mouse move",
+          action: [
+            "0.6640625%",
+            "0.3333333333333333%",
+          ],
+          type: "event",
+        },
+        {
+          delay: 784,
+          event_type: "EM",
+          action_type: "mouse left down",
+          action: [
+            "0.6640625%",
+            "0.3333333333333333%",
+          ],
+          type: "event",
+        },
+        {
+          delay: 5,
+          event_type: "EM",
+          action_type: "mouse left up",
+          action: [
+            "0.6640625%",
+            "0.3333333333333333%",
+          ],
+          type: "event",
+        },
+        {
+          delay: 865,
+          event_type: "EK",
+          action_type: "key down",
+          action: [
+            97,
+            "a",
+            0,
+          ],
+          type: "event",
+        },
+        {
+          delay: 17,
+          event_type: "EK",
+          action_type: "key up",
+          action: [
+            97,
+            "a",
+            0,
+          ],
+          type: "event",
+        },
+      ],
+    }  [PASS] 录制到鼠标按下事件
+  [PASS] 录制到键盘 a 事件
+
+################ 5. GUI 热键回放 (F6) ################
+  回放前鼠标: x:200 y:800 screen:0 window:1294
+  截图: 03_gui_replay_running.png（回放执行中）
+  回放后鼠标: x:850 y:300 screen:0 window:0
+  截图: 04_gui_replay_done.png
+  [PASS] GUI 热键回放生效：鼠标落到录制坐标 (850,300)
+  [PASS] 应用日志记录到脚本执行完成
+
+################ 6. CLI 模式回放 + xev 交叉验证 ################
+  [PASS] xev 目标窗口就绪（CLI 测试）
+  执行前鼠标: x:100 y:100 screen:0 window:6291463
+  CLI 退出码 = 0
+  [PASS] CLI 模式执行成功
+  执行后鼠标: x:850 y:300 screen:0 window:0
+  [PASS] 回放把鼠标移动到 (850,*)
+  ---- xev 捕获到的注入事件（xev 自身日志） ----
+    MotionNotify   7
+    ButtonPress    1
+    ButtonRelease  1
+    KeyPress       2
+    KeyRelease     2
+  [PASS] xev 收到鼠标移动 MotionNotify x7
+  [PASS] xev 收到鼠标点击 ButtonPress x1
+  [PASS] xev 收到键盘按键 KeyPress x2
+  ---- 事件投递目标窗口 & 按键明细（取自 xev 日志） ----
+    KeyPress event, serial 28, synthetic NO, window 0x200001,
+        state 0x0, keycode 38 (keysym 0x61, a), same_screen YES,
+        state 0x0, keycode 38 (keysym 0x61, a), same_screen YES,
+    KeyPress event, serial 31, synthetic NO, window 0x200001,
+        state 0x0, keycode 56 (keysym 0x62, b), same_screen YES,
+        state 0x0, keycode 56 (keysym 0x62, b), same_screen YES,
+  [PASS] 键盘事件确实投递到 xev 窗口 0x200001
+  [PASS] xev 收到键 a
+  [PASS] xev 收到键 b
+
+################ 7. 收尾 ################
+  应用日志尾部：
+    2026-10-12 12:19:31.347 | INFO     | Plugin.Manager:register_plugin:71 - Registered functions: dict_keys([])
+    2026-10-12 12:19:31.926 | INFO     | Util.RunScriptClass:run_script_from_path:222 - Script path:/home/kmgtest/test/demo.json5
+    2026-10-12 12:19:31.947 | INFO     | Util.Parser:parse:26 - Use Script Parser
+    2026-10-12 12:19:32.286 | INFO     | Util.RunScriptClass:run_script_from_path:234 - ===========0==============
+    2026-10-12 12:19:35.020 | INFO     | Util.RunScriptClass:run_script_from_path:240 - /home/kmgtest/test/demo.json5 run finish
+total 192
+-rw-r--r-- 1 root root 35110 Oct 12 12:18 01_gui_start.png
+-rw-r--r-- 1 root root 55652 Oct 12 12:18 02_after_record.png
+-rw-r--r-- 1 root root 43696 Oct 12 12:19 03_gui_replay_running.png
+-rw-r--r-- 1 root root 55652 Oct 12 12:19 04_gui_replay_done.png
+
+################ 结果汇总 ################
+  PASS=61  FAIL=0
